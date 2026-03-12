@@ -14,7 +14,6 @@ import {
   ArrowRight,
   Zap,
   Loader2,
-  BarChart4,
   Code,
 } from "lucide-react";
 
@@ -160,212 +159,169 @@ const ZyphWebsite = () => {
   const services = [
     {
       icon: Brain,
-      title: "Consultoría en Transformación Digital con IA",
+      title: "Transformación Digital",
       description:
-        "Diagnóstico de procesos que pueden automatizarse con IA. Plan de adopción tecnológica a la medida de cada negocio.",
-      color: "from-blue-500 to-cyan-500",
+        "Diagnóstico y plan de adopción de IA a medida de tu negocio.",
     },
     {
       icon: Cog,
-      title: "Automatización de Procesos (RPA + IA)",
+      title: "Automatización",
       description:
-        "Chatbots inteligentes para atención al cliente. Automatización de reportes financieros, ventas y RRHH. Flujos automatizados con Zapier, Make o APIs.",
-      color: "from-indigo-500 to-blue-500",
+        "Chatbots inteligentes, flujos automatizados y RPA para procesos eficientes.",
     },
     {
       icon: BarChart3,
-      title: "Análisis de Datos y BI con IA",
+      title: "Análisis de Datos",
       description:
-        "Dashboards inteligentes en Power BI, Tableau o Looker. Modelos predictivos para ventas, clientes e inventario. Limpieza y organización de datos con Python/IA.",
-      color: "from-cyan-500 to-blue-500",
+        "Dashboards inteligentes y modelos predictivos para decisiones basadas en datos.",
     },
-
     {
       icon: Code,
-      title: "Desarrollo Web & Soluciones Digitales",
+      title: "Desarrollo Web",
       description:
-        "Sitios web y soluciones a medida (landing, e-commerce o sistemas livianos) optimizados para captar clientes, vender online y gestionar operaciones como reservas o CRM.",
-      color: "from-cyan-500 to-blue-500",
+        "Soluciones digitales personalizadas optimizadas para tu negocio.",
     },
   ];
 
   const projects = [
     {
       title: "Automatización E-commerce",
-      description: "Chatbot inteligente que aumentó conversiones 35%",
-      image:
-        "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop",
-      metrics: ["35% ↑ Conversiones", "50% ↓ Tiempo respuesta"],
+      metric: "35% ↑ Conversiones",
+      detail: "Chatbot inteligente",
     },
     {
       title: "Dashboard Predictivo",
-      description: "Sistema de predicción de ventas con 92% precisión",
-      image:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop",
-      metrics: ["92% Precisión", "25% ↑ ROI"],
+      metric: "92% Precisión",
+      detail: "Predicción de ventas",
     },
     {
       title: "Automatización RRHH",
-      description: "Procesamiento automático de candidatos",
-      image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop",
-      metrics: ["80% ↓ Tiempo", "100+ Candidatos/día"],
+      metric: "80% ↓ Tiempo",
+      detail: "Procesamiento de candidatos",
     },
   ];
 
+  const navItems = [
+    { id: "home", label: "Inicio" },
+    { id: "services", label: "Servicios" },
+    { id: "projects", label: "Casos de Éxito" },
+    { id: "about", label: "Nosotros" },
+    { id: "contact", label: "Contacto" },
+  ];
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white text-gray-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2">
-              <Zap className="h-8 w-8 text-blue-600" />
-              <span className="text-lg font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-                Zyph Technologies
-              </span>
-            </div>
-            {/* FIN - CÓDIGO ACTUALIZADO */}
-
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                {["home", "services", "projects", "about", "contact"].map(
-                  (item) => (
-                    <button
-                      key={item}
-                      onClick={() => scrollToSection(item)}
-                      className={`capitalize transition-all duration-300 px-3 py-2 rounded-md text-sm font-medium ${
-                        activeSection === item
-                          ? "text-blue-600 bg-blue-50"
-                          : "text-gray-700 hover:text-blue-600 hover:bg-blue-50"
-                      }`}
-                    >
-                      {item === "projects"
-                        ? "Casos de Éxito"
-                        : item === "about"
-                        ? "Nosotros"
-                        : item === "contact"
-                        ? "Contacto"
-                        : item === "services"
-                        ? "Servicios"
-                        : "Inicio"}
-                    </button>
-                  )
-                )}
+      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            {/* Logo */}
+            <button
+              onClick={() => scrollToSection("home")}
+              className="flex items-center gap-2 group"
+            >
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-lg flex items-center justify-center group-hover:shadow-lg transition-shadow">
+                <Zap className="h-6 w-6 text-white" />
               </div>
+              <span className="font-bold text-lg hidden sm:inline">Zyph</span>
+            </button>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center gap-8">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`text-sm font-medium transition-colors ${
+                    activeSection === item.id
+                      ? "text-blue-600"
+                      : "text-gray-600 hover:text-gray-900"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
 
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-600 transition-colors duration-200"
-              >
-                {isMenuOpen ? (
-                  <X className="h-6 w-6" />
-                ) : (
-                  <Menu className="h-6 w-6" />
-                )}
-              </button>
-            </div>
+            {/* CTA Button */}
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="hidden md:block bg-blue-600 text-white px-6 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+            >
+              Contacto
+            </button>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden text-gray-600 hover:text-gray-900"
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {isMenuOpen && (
+            <div className="md:hidden mt-4 space-y-3 pb-4">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 shadow-lg">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              {["home", "services", "projects", "about", "contact"].map(
-                (item) => (
-                  <button
-                    key={item}
-                    onClick={() => scrollToSection(item)}
-                    className="capitalize block w-full text-left px-3 py-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors duration-200"
-                  >
-                    {item === "projects"
-                      ? "Casos de Éxito"
-                      : item === "about"
-                      ? "Nosotros"
-                      : item === "contact"
-                      ? "Contacto"
-                      : item === "services"
-                      ? "Servicios"
-                      : "Inicio"}
-                  </button>
-                )
-              )}
-            </div>
-          </div>
-        )}
       </nav>
 
       {/* Hero Section */}
-      <section
-        id="home"
-        className="pt-16 min-h-screen flex items-center bg-gradient-to-br from-blue-50 via-white to-cyan-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in-up">
-              <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                Impulsamos tu negocio con{" "}
-                <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-800 bg-clip-text text-transparent">
-                  IA, automatización
-                </span>{" "}
-                y análisis de datos
-              </h1>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Transformamos procesos empresariales mediante inteligencia
-                artificial y automatización, generando eficiencia y crecimiento
-                sostenible.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => scrollToSection("services")}
-                  className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  <span>Nuestros Servicios</span>
-                  <ArrowRight className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={() => scrollToSection("contact")}
-                  className="border-2 border-blue-600 text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-all duration-300"
-                >
-                  Contáctanos
-                </button>
-              </div>
+      <section id="home" className="pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center space-y-6">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
+              Transforma tu negocio con{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                IA y automatización
+              </span>
+            </h1>
+
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Impulsamos empresas mediante inteligencia artificial, automatización
+              de procesos y análisis de datos para el crecimiento sostenible.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+              <button
+                onClick={() => scrollToSection("services")}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-flex items-center justify-center gap-2"
+              >
+                Explorar Servicios
+                <ArrowRight className="h-4 w-4" />
+              </button>
+              <button
+                onClick={() => scrollToSection("contact")}
+                className="border border-gray-300 text-gray-900 px-8 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              >
+                Consulta Gratuita
+              </button>
             </div>
 
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl transform rotate-6 opacity-10"></div>
-              <div className="relative bg-white p-8 rounded-2xl shadow-2xl border border-gray-100">
-                <div className="grid grid-cols-2 gap-6">
-                  <div className="text-center p-4 bg-blue-50 rounded-xl">
-                    <div className="text-2xl font-bold text-blue-600">50+</div>
-                    <div className="text-sm text-gray-600">
-                      Procesos Automatizados
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-cyan-50 rounded-xl">
-                    <div className="text-2xl font-bold text-cyan-600">95%</div>
-                    <div className="text-sm text-gray-600">
-                      Eficiencia Mejorada
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-indigo-50 rounded-xl">
-                    <div className="text-2xl font-bold text-indigo-600">
-                      30+
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Empresas Transformadas
-                    </div>
-                  </div>
-                  <div className="text-center p-4 bg-blue-50 rounded-xl">
-                    <div className="text-2xl font-bold text-blue-600">24/7</div>
-                    <div className="text-sm text-gray-600">
-                      Soporte Continuo
-                    </div>
-                  </div>
-                </div>
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-8 pt-12 max-w-2xl mx-auto">
+              <div>
+                <div className="text-3xl font-bold">50+</div>
+                <div className="text-sm text-gray-600">Procesos Automatizados</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold">30+</div>
+                <div className="text-sm text-gray-600">Empresas Transformadas</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold">95%</div>
+                <div className="text-sm text-gray-600">Eficiencia Mejorada</div>
               </div>
             </div>
           </div>
@@ -373,44 +329,26 @@ const ZyphWebsite = () => {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="services" className="py-20 px-6 bg-gray-50">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Nuestros Servicios
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Soluciones integrales de IA y automatización diseñadas para
-              impulsar tu negocio
+            <h2 className="text-4xl font-bold mb-4">Nuestros Servicios</h2>
+            <p className="text-xl text-gray-600">
+              Soluciones integrales diseñadas para tu éxito
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white border border-gray-100 rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-full flex flex-col"
+                className="bg-white p-8 rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-lg transition-all group"
               >
-                <div
-                  className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <service.icon className="h-8 w-8 text-white" />
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-blue-600 transition-colors">
+                  <service.icon className="h-6 w-6 text-blue-600 group-hover:text-white transition-colors" />
                 </div>
-
-                <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
-                  {service.title}
-                </h3>
-
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
-
-                <div className="mt-auto pt-6">
-                  <button className="text-blue-600 font-semibold flex items-center space-x-2 group-hover:space-x-3 transition-all duration-300">
-                    <span>Saber más</span>
-                    <ChevronRight className="h-4 w-4" />
-                  </button>
-                </div>
+                <h3 className="text-lg font-bold mb-2">{service.title}</h3>
+                <p className="text-gray-600 text-sm">{service.description}</p>
               </div>
             ))}
           </div>
@@ -418,46 +356,28 @@ const ZyphWebsite = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="projects" className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Casos de Éxito
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Proyectos que demuestran el poder transformador de nuestras
-              soluciones
+            <h2 className="text-4xl font-bold mb-4">Casos de Éxito</h2>
+            <p className="text-xl text-gray-600">
+              Proyectos que demuestran nuestro impacto
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1"
+                className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="mb-4">
+                  <h3 className="text-lg font-bold mb-1">{project.title}</h3>
+                  <p className="text-sm text-gray-600">{project.detail}</p>
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.metrics.map((metric, metricIndex) => (
-                      <span
-                        key={metricIndex}
-                        className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold"
-                      >
-                        {metric}
-                      </span>
-                    ))}
+                <div className="pt-4 border-t border-gray-100">
+                  <div className="text-2xl font-bold text-blue-600">
+                    {project.metric}
                   </div>
                 </div>
               </div>
@@ -467,241 +387,172 @@ const ZyphWebsite = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">
-                Sobre Nosotros
-              </h2>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                En Zyph Technologies, creemos que la inteligencia artificial y
-                la automatización son las herramientas que definirán el futuro
-                de los negocios. Nuestro equipo de expertos se dedica a hacer
-                que esta transformación sea accesible y efectiva para empresas
-                de todos los tamaños.
-              </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                Nuestra visión es ser el socio estratégico que impulse la
-                innovación tecnológica en cada organización, generando valor
-                real a través de soluciones inteligentes y sostenibles.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Experiencia Comprobada</span>
+      <section id="about" className="py-20 px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Sobre Zyph Technologies</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Creemos que la IA y la automatización son herramientas clave para
+              el futuro de los negocios. Nuestro equipo de expertos transforma
+              empresas en soluciones innovadoras y sostenibles.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
+            <div className="space-y-4">
+              {[
+                "Experiencia Comprobada",
+                "Soluciones Personalizadas",
+                "Soporte 24/7",
+                "ROI Garantizado",
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0" />
+                  <span className="text-gray-700">{item}</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">
-                    Soluciones Personalizadas
-                  </span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">Soporte 24/7</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="h-6 w-6 text-green-500 flex-shrink-0" />
-                  <span className="text-gray-700">ROI Garantizado</span>
-                </div>
-              </div>
+              ))}
             </div>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl transform -rotate-6 opacity-10"></div>
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop"
-                alt="Equipo trabajando"
-                className="relative rounded-2xl shadow-2xl w-full h-96 object-cover"
-              />
+            <div className="bg-white rounded-xl p-8 border border-gray-200">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-blue-600 mb-2">
+                  10+
+                </div>
+                <p className="text-gray-600">Años de experiencia en transformación digital</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section
-        id="contact"
-        className="py-20 bg-gradient-to-br from-blue-50 to-cyan-50"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-20 px-6">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-4xl font-bold mb-4">
               ¿Listo para transformar tu negocio?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Contáctanos y descubre cómo podemos impulsar tu empresa con IA y
-              automatización
+            <p className="text-xl text-gray-600">
+              Contáctanos y descubre cómo podemos ayudarte
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Envíanos un mensaje
-                </h3>
+            {/* Form */}
+            <div className="bg-white border border-gray-200 rounded-xl p-8">
+              <h3 className="text-xl font-bold mb-6">Envíanos un mensaje</h3>
 
-                {/* Estado del formulario */}
-                {submitStatus && (
-                  <div
-                    className={`mb-6 p-4 rounded-lg border ${
-                      submitStatus.type === "success"
-                        ? "bg-green-50 border-green-200 text-green-800"
-                        : "bg-red-50 border-red-200 text-red-800"
-                    }`}
-                  >
-                    <div className="flex items-center space-x-2">
-                      {submitStatus.type === "success" ? (
-                        <CheckCircle className="h-5 w-5" />
-                      ) : (
-                        <X className="h-5 w-5" />
-                      )}
-                      <span>{submitStatus.message}</span>
-                    </div>
-                  </div>
-                )}
-
-                <div className="space-y-6">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Nombre *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.nombre}
-                        onChange={(e) =>
-                          handleInputChange("nombre", e.target.value)
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                        placeholder="Tu nombre"
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        Empresa *
-                      </label>
-                      <input
-                        type="text"
-                        value={formData.empresa}
-                        onChange={(e) =>
-                          handleInputChange("empresa", e.target.value)
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                        placeholder="Tu empresa"
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) =>
-                        handleInputChange("email", e.target.value)
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                      placeholder="tu@email.com"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Teléfono *
-                    </label>
-                    <input
-                      type="tel"
-                      value={formData.telefono}
-                      onChange={(e) =>
-                        handleInputChange("telefono", e.target.value)
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
-                      placeholder="+595 123 456 789"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Mensaje *
-                    </label>
-                    <textarea
-                      rows={4}
-                      value={formData.mensaje}
-                      onChange={(e) =>
-                        handleInputChange("mensaje", e.target.value)
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 resize-none"
-                      placeholder="Cuéntanos sobre tu proyecto..."
-                      disabled={isSubmitting}
-                    />
-                  </div>
-                  <button
-                    onClick={handleSubmit}
-                    disabled={isSubmitting}
-                    className="w-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-lg flex items-center justify-center space-x-2"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                        <span>Enviando...</span>
-                      </>
-                    ) : (
-                      <span>Enviar Mensaje</span>
-                    )}
-                  </button>
+              {submitStatus && (
+                <div
+                  className={`mb-6 p-4 rounded-lg text-sm ${
+                    submitStatus.type === "success"
+                      ? "bg-green-50 text-green-800 border border-green-200"
+                      : "bg-red-50 text-red-800 border border-red-200"
+                  }`}
+                >
+                  {submitStatus.message}
                 </div>
-              </div>
+              )}
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    placeholder="Nombre"
+                    value={formData.nombre}
+                    onChange={(e) => handleInputChange("nombre", e.target.value)}
+                    className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    disabled={isSubmitting}
+                  />
+                  <input
+                    type="text"
+                    placeholder="Empresa"
+                    value={formData.empresa}
+                    onChange={(e) => handleInputChange("empresa", e.target.value)}
+                    className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    disabled={isSubmitting}
+                  />
+                </div>
+
+                <input
+                  type="email"
+                  placeholder="Email"
+                  value={formData.email}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  disabled={isSubmitting}
+                />
+
+                <input
+                  type="tel"
+                  placeholder="Teléfono"
+                  value={formData.telefono}
+                  onChange={(e) => handleInputChange("telefono", e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                  disabled={isSubmitting}
+                />
+
+                <textarea
+                  rows={4}
+                  placeholder="Tu mensaje"
+                  value={formData.mensaje}
+                  onChange={(e) => handleInputChange("mensaje", e.target.value)}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all resize-none"
+                  disabled={isSubmitting}
+                />
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    "Enviar Mensaje"
+                  )}
+                </button>
+              </form>
             </div>
 
-            <div className="space-y-8">
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Información de Contacto
-                </h3>
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <Mail className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+            {/* Contact Info */}
+            <div className="space-y-6">
+              <div className="bg-white border border-gray-200 rounded-xl p-8">
+                <h3 className="text-xl font-bold mb-6">Información de Contacto</h3>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <Mail className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Email</h4>
+                      <p className="font-medium">Email</p>
                       <p className="text-gray-600">contacto@zyphtech.tech</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Phone className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                  <div className="flex gap-4">
+                    <Phone className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Teléfono</h4>
+                      <p className="font-medium">Teléfono</p>
                       <p className="text-gray-600">+595 992 941 392</p>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="h-6 w-6 text-blue-600 mt-1 flex-shrink-0" />
+                  <div className="flex gap-4">
+                    <MapPin className="h-5 w-5 text-blue-600 flex-shrink-0 mt-1" />
                     <div>
-                      <h4 className="font-semibold text-gray-900">Ubicación</h4>
-                      <p className="text-gray-600">
-                        Ciudad Empresarial
-                        <br />
-                        Asunción, Paraguay
-                      </p>
+                      <p className="font-medium">Ubicación</p>
+                      <p className="text-gray-600">Asunción, Paraguay</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 text-white">
-                <h3 className="text-2xl font-bold mb-4">
-                  ¿Tienes un proyecto en mente?
-                </h3>
-                <p className="mb-6 opacity-90">
-                  Agenda una consulta gratuita de 30 minutos y descubre cómo
-                  podemos ayudarte.
+              <div className="bg-blue-600 text-white rounded-xl p-8">
+                <h3 className="text-xl font-bold mb-3">Consulta Gratuita</h3>
+                <p className="mb-4 text-blue-100">
+                  Agenda 30 minutos con nuestros expertos
                 </p>
-                <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-                  Agendar Consulta
+                <button className="w-full bg-white text-blue-600 font-medium py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                  Agendar Llamada
                 </button>
               </div>
             </div>
@@ -710,25 +561,23 @@ const ZyphWebsite = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-4 gap-8">
-            <div className="lg:col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <Zap className="h-8 w-8 text-blue-400" />
-                <span className="text-xl font-bold">Zyph Technologies</span>
+      <footer className="bg-gray-900 text-white py-12 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 mb-8">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <Zap className="h-6 w-6 text-blue-400" />
+                <span className="font-bold">Zyph Technologies</span>
               </div>
-              <p className="text-gray-400 mb-6 max-w-md">
-                Transformamos negocios mediante inteligencia artificial y
-                automatización, creando soluciones innovadoras para el futuro
-                digital.
+              <p className="text-gray-400 text-sm">
+                Transformamos negocios mediante IA y automatización.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Servicios</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Consultoría en IA</li>
+              <h4 className="font-semibold mb-3 text-sm">Servicios</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
+                <li>Transformación Digital</li>
                 <li>Automatización RPA</li>
                 <li>Análisis de Datos</li>
                 <li>Business Intelligence</li>
@@ -736,37 +585,19 @@ const ZyphWebsite = () => {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Contacto</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-3 text-sm">Contacto</h4>
+              <ul className="space-y-2 text-gray-400 text-sm">
                 <li>contacto@zyphtech.tech</li>
                 <li>+595 992 941 392</li>
-                <li>Asunción, Paraguay</li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+          <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
             <p>&copy; 2025 Zyph Technologies. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
-
-      <style jsx>{`
-        .animate-fade-in-up {
-          animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 };
