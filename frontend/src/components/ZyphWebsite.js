@@ -416,7 +416,7 @@ const ZyphWebsite = () => {
             <h1 className="text-5xl md:text-6xl font-bold leading-tight animate-fadeInUp">
               Transforma tu negocio con{" "}
               <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent inline-block">
-                IA y automatización
+                IA y Datos y Automatización
               </span>
             </h1>
 
